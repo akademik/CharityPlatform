@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Username:</b>
+  <%= @user.username %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>First name:</b>
+  <%= @user.first_name if @user.first_name != 'change' %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @user.last_name if @user.last_name != 'name' %>
+</p>
+
+<p>
+  <b>Role:</b>
+  <%= @user.role %>
+</p>
+
+<p>
+  <b>Authentication_secret:</b>
+  <%= @user.authentication_secret %>
+  <br/>
+  <b>Authentication_secret_expiration:</b>
+  <%= @user.authentication_secret_expiration %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

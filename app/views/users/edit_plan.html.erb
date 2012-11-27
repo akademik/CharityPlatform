@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>Select Plan</h2>
+
+  <% @plans.each do |plan| %>
+    <div class="row-fluid">
+      <div class="span8">
+        <b><%= plan.price %>$/month</b>
+        <h2><%= plan.name %></h2>
+        <p><%= plan.description %></p>
+        <% if current_user.subscription.plan  == plan %>
+          <span class="alert alert-success">Your plan</span>
+        <% else %>
+          <%= link_to "Upgrade", update_plan_users_path(plan.code), :class => 'btn btn-primary', :method => :put %>
+        <% end %>
+        <hr/>
+      </div>
+    </div>
+  <% end %>
+
+</div>
