@@ -1,0 +1,337 @@
+/*
+ * Author: Serik Beketayev
+ * email: serik.beketayev@gmail.com
+ */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center,dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed,  figure, figcaption, footer, header, hgroup,  menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%;	font: inherit; vertical-align: baseline; } article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {	display: block;} body { line-height: 1; } ol, ul { list-style: none; } blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; } table { border-collapse: collapse; border-spacing: 0; }
+
+/** Base Body Styles **/
+html { height: 100%; width: 100%; }
+body { height: 100%; width: 100%; min-width: 513px; overflow: hidden; background: #b2ac9d; color: #0D0E20; font: 100% Helvetica, Arial, Verdana, sans-serif;}
+
+h1,h2,h3,h4,h5,h6 { font-weight:bold; }
+h1 { font-size: 3em;}
+h2 { font-size: 2.4em;}
+h3 { font-size: 1.8em;}
+h4 { font-size: 1.4em;}
+h5 { font-size: 1.2em;}
+h6 { font-size: 1em;}
+
+a { text-decoration:none; }
+a:active, a:visited { color: #607890; }
+a:hover { color: #036; }
+
+/** Layout Styles **/
+
+body {
+    background: url("../images/bg.png") repeat;
+}
+
+.hidden {
+   display: none;
+}
+
+.vSpacer {
+    height: 50%;
+    width: 100%;
+    float: left;
+}
+    .vSpacer.main {
+        margin-bottom: -13em;
+    }
+    .vSpacer.logo {
+        margin-bottom: -126px;
+    }
+    /*.vSpacer.overlay {
+        margin-bottom: */
+
+.tooltip {
+    background: url("../images/white_arrow_down.png") no-repeat scroll 0 0 transparent;
+    color: #000;
+    text-align: center;
+    display: none;
+    font-size: 12px;
+    height: 70px;
+    padding: 24px 16px;
+    width: 170px;
+}
+.tooltipLeft {
+    background: url("../images/white_arrow_right.png") no-repeat scroll 0 0 transparent;
+    color: #000;
+    text-align: center;
+    display: none;
+    font-size: 12px;
+    height: 70px;
+    padding: 16px 30px 16px 16px;
+    width: 174px;
+}
+.tooltipRight {
+    background: url("../images/white_arrow_left.png") no-repeat scroll 0 0 transparent;
+    color: #000;
+    text-align: center;
+    display: none;
+    font-size: 12px;
+    height: 70px;
+    padding: 16px 16px 16px 30px;
+    width: 174px;
+}
+#mainLogo {
+    height: 74px;
+    width: 164px;
+    margin: 0 auto;
+    clear: both;
+    position: relative;
+    background: url("../images/main_logo.png") no-repeat;
+}
+    #mainLogo a {
+        height: 100%;
+        width: 100%;
+        display: block;
+    }
+
+
+#container {
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+#middleCol {
+    float: left;
+    margin: 0px 8px;
+}
+
+.puzzleInfo {
+    height: 1em;
+    width: 333px;
+    line-height: 1em;
+    margin: 4px auto;
+    font-size: 1.5em;
+}
+    #puzzleNumber {
+        float: left;
+        margin-left: -1px;
+    }
+    #puzzleNumber:before {
+        content: 'puzzle #';
+        float: left;
+    }
+    #puzzleDifficulty {
+        float: right;
+    }
+        .difficultyOrbs {
+            height: 20px;
+            width: 20px;
+            margin-left: 3px;
+            float: right;
+            background: url("../images/puzzleDifficulty_sprite.png") no-repeat;
+            background-position: 0px 0px;
+        }
+            .difficultyOrbs.on {
+                background-position: 0px -20px;
+            }
+
+
+
+#puzzle {
+    height: 333px;
+    width: 333px;
+    margin: 0 auto;
+    border: none;
+    border-collapse: collapse;
+    text-align: center;
+}
+    #puzzle td {
+        height: 35px;
+        width: 35px;
+        margin: 0px;
+        padding: 0px;
+        background-color: #FFF;
+        border: 1px solid #0D0E20;
+        font-size: 20px;
+    }
+        #puzzle td input {
+            height: 34px;
+            width: 34px;
+            border: none;
+            text-align: center;
+            font-size: 100%;
+            background-color: transparent;
+        }
+            #puzzle td input[disabled='disabled'] {
+                color: #111;
+                background-color: transparent;
+            }
+/*        .possibles1 {
+            position: absolute;
+            font-size: 9px;
+            margin-top: -35px;
+            margin-left: -13px;
+        }
+        .possibles2 {
+            position: absolute;
+            font-size: 9px;
+            margin-top: -35px;
+            margin-left: 0px;
+        }
+        .possibles3 {
+            position: absolute;
+            font-size: 9px;
+            margin-top: -35px;
+            margin-left: 14px;
+        }
+        .possibles4 {
+            position: absolute;
+            font-size: 9px;
+            margin-top: -23px;
+            margin-left: -13px;
+        }
+        .possibles5 {
+            position: absolute;
+            font-size: 9px;
+            margin-top: -23px;
+            margin-left: 0px;
+        }
+        .possibles6 {
+            position: absolute;
+            font-size: 9px;
+            margin-top: -23px;
+            margin-left: 14px;
+        }
+        .possibles7 {
+            position: absolute;
+            font-size: 9px;
+            margin-top: -11px;
+            margin-left: -13px;
+        }
+        .possibles8 {
+            position: absolute;
+            font-size: 9px;
+            margin-top: -11px;
+            margin-left: 0px;
+        }
+        .possibles9 {
+            position: absolute;
+            font-size: 9px;
+            margin-top: -11px;
+            margin-left: 14px;
+        }
+        table.possibles {
+            height: 35px;
+            width: 35px;
+            border-collapse: collapse;
+        }
+        td.poss1 {
+            height: 10px;
+            width: 10px;
+            font-size: 9px;
+        }
+        td.poss2 {
+            height: 10px;
+            width: 10px;
+            font-size: 9px;
+        }
+        td.poss3 {
+            height: 10px;
+            width: 10px;
+            font-size: 9px;
+        }
+        td.poss4 {
+            height: 10px;
+            width: 10px;
+            font-size: 9px;
+        }
+        td.poss5 {
+            height: 10px;
+            width: 10px;
+            font-size: 9px;
+        }
+        td.poss6 {
+            height: 10px;
+            width: 10px;
+            font-size: 9px;
+        }
+        td.poss7 {
+            height: 10px;
+            width: 10px;
+            font-size: 9px;
+        }
+        td.poss8 {
+            height: 10px;
+            width: 10px;
+            font-size: 9px;
+        }
+        td.poss9 {
+            height: 10px;
+            width: 10px;
+            font-size: 9px;
+        }                                                                   */
+    .r1 { border-top-width: 2px!important; }
+    .r3, .r6, .r9 { border-bottom-width: 2px!important; }
+    .c1 { border-left-width: 2px!important; }
+    .c3, .c6, .c9 { border-right-width: 2px!important; }
+
+#logo-text {
+    text-align: center;
+    font: 40px impact,sans-serif;
+}
+
+div {
+  padding: 0px;
+  margin: 0px;
+}
+
+.board {
+  width: 400px;
+  height: 400px;
+  border: 1px solid #777;
+  position: relative;
+}
+
+.square {
+  width: 50px;
+  height: 50px;
+  float:left;
+  z-index:1;
+  position:relative;
+}
+
+.checker {
+  width: 30px;
+  height: 30px;
+  float:left;
+  margin: 10px 0px 0px 10px;
+  position: relative;
+  z-index:10;
+  border-radius: 15px;
+}
+
+.square_black {
+  background-color: #000;
+}
+
+.square_white {
+  background-color: #EFEAD1;
+}
+
+.square_highlighted {
+  background-color: #fefefe;
+}
+
+.black {
+  background-color: #ff0000;
+}
+
+.white {
+  background-color: #358F39;
+}
+
+/** The Magnificent Clearfix: Updated to prevent margin-collapsing on child elements.  mp/bestclearfix **/
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+.clearfix:after { clear: both; }
+/** Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page **/
+.clearfix { zoom: 1; }
+
+@media all and (max-height: 640px) {
+    #mainLogo { display: none; }
+}
